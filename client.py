@@ -9,7 +9,11 @@ if result.status_code == 200:
     print(result.json())
 
 # should return the demo path example
-result = requests.post(API_URL + "/demo/myPath?param_demo=myParam", json={"key": "value"}, headers={"header_demo": "myHeader"})
+result = requests.post(
+    API_URL + "/demo/myPath?param_demo=myParam", 
+    json={"key": "value"}, 
+    headers={"header_demo": "myHeader"})
+
 if result.status_code == 200:
     print(result.json())
 
