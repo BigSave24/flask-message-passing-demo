@@ -1,7 +1,7 @@
 from crypt import methods
 from logging import raiseExceptions
-from flask import Flask, request, jsonisfy, Response, json
-from .services import retrieve_item, create_item, retrieve_orders
+from flask import Flask, request, jsonify, Response, json
+from .services import create_order, retrieve_item, create_item, retrieve_orders
 
 app = Flask(__name__)
 
@@ -38,9 +38,9 @@ def pets(item_id):
 @app.route('/api/orders/computers', methods=['GET', 'POST'])
 def computers():
     if request.method == 'GET':
-        return jsonisfy(retrieve_orders())
+        return jsonify(retrieve_orders())
     elif request.method == 'POST':
-        return jsonisfy(create_item(body=request.json))
+        return jsonify(create_order(body=request.json))
     else:
         raise Exception ('Unsupported HTTP request type.')
 
